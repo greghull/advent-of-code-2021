@@ -9,22 +9,25 @@
        read-string))
 
 (defn increases
-  "Given a sequence `v` of n numbers, returns list of n-1 booleans
+  "Given a collection of n numbers, returns list of n-1 booleans
   determined by v[i] < v[i+1]"
-  ([v] (increases v []))
-  ([v results]
-   (let [[a b] v]
+  ([coll] (increases coll []))
+  ([coll results]
+   (let [[a b] coll]
      (if (nil? b)
        results
-       (recur (rest v) (conj results (< a b)))))))
+       (recur (rest coll) (conj results (< a b)))))))
+
 
 (defn sliding-windows
-  ([v] (sliding-windows v []))
-  ([v wins]
-   (let [[a b c] v]
-     (if (nil? c)
+  "Returns a sequence of the sums of windows `n` elements from the
+  collection `coll`"
+  ([n coll] (sliding-windows n coll []))
+  ([n coll wins]
+   (let [window (take n coll)]
+     (if (> n (count window))
        wins
-       (recur (rest v) (conj wins (+ a b c)))))))
+       (recur n (rest coll) (conj wins (reduce + window)))))))
 
 ;; Part 1
 (->> "resources/day_1.txt"
@@ -36,7 +39,7 @@
 ;; Part 2
 (->> "resources/day_1.txt"
      read-seq
-     sliding-windows
+     (sliding-windows 3)
      increases
      (filter true?)
      count)
