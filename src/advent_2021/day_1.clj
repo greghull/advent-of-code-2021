@@ -2,11 +2,8 @@
 
 (defn read-seq
   "Read in a file with a list of integers into a sequence"
-   [fname]
-  (->> fname
-       slurp
-       (#(str "[" % "]"))
-       read-string))
+   [f]
+  (->> f slurp (#(str "[" % "]")) read-string))
 
 (defn increases
   "Given a collection of n numbers, returns list of n-1 booleans
@@ -20,7 +17,7 @@
 
 
 (defn sliding-windows
-  "Returns a sequence of the sums of windows `n` elements from the
+  "Returns a sequence of the sums of `n` element windows from the
   collection `coll`"
   ([n coll] (sliding-windows n coll []))
   ([n coll wins]
