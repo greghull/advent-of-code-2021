@@ -11,9 +11,9 @@
      count)                                                 ;count results
 
 ;; Part 2
-(time (->> "resources/day_1.txt"
+(->> "resources/day_1.txt"
      read-seq                                               ;convert text to seq
      (#(map + % (rest %) (nthrest % 2)))                    ;map to s_i + s_i+1 + s+i+2
      (#(map < % (rest %)))                                  ;map to s_i < s_i+1
      (filter true?)                                         ;filter out false
-     count))                                             ;count the results
+     count)                                             ;count the results

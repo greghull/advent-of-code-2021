@@ -47,3 +47,4 @@
 (apply score (first-winner boards numbers))
 ;; Part 2 Answer
 (apply score (last-winner boards numbers -1))
+
