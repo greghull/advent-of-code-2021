@@ -1,8 +1,8 @@
-(ns advent-2021.day-9
+(ns advent-2021.day-8
   (:require [clojure.string :as str]))
 
 (defn parse []
-  (->> "resources/day_9.txt"
+  (->> "resources/day_8.txt"
     slurp
     str/split-lines
     (map #(str/split % #" \| "))
