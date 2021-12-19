@@ -1,4 +1,3 @@
-```clojure
 (ns advent-2021.day-11
   (:require [clojure.string :as str]
             [clojure.core.matrix :as m]))
@@ -52,5 +51,3 @@
   (if (= 0 (reduce + (flatten energy)))
     n
     (recur (step energy) (inc n))))
-```
-
